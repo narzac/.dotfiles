@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# make and change to a directory
+md () { mkdir -p "$1" && cd "$1"; }
+
+#-not -path *//*
+FIND_IGNORE_LIST='-not -path */node_modules/* -not -path */.npm/* -not -path */.rvm/* -not -path */.node-gyp/* -not -path */.gem/* -not -path */.cache/*
+                  -not -path */.bash_sessions/*  -not -path */Library/* -not -path */emacs.d/tmp/* -not -path */emacs.d/elpa/*
+                  -not -path */.subversion/* -not -path */.local/* -not -path */.nvm/* -not -path */.git/* -not -path */.git*
+                  -not -name .DS_Store -not -name .localized -not -name .gitignore -not -name .bower.json'
+
+# list all hidden files
+list_hidden () { find "$1" -path "*/.*" ${FIND_IGNORE_LIST} -ls; }
+
+# list all hidden files, except non-hidden files contained in hidden directories
+list_hidden_pretty () { find "$1" -name ".*" ${FIND_IGNORE_LIST} -ls; }
+
+# prettify csv
+csv_pretty() { column -s, -t < "$1" | less -#2 -N -S ;}
+
+recpriv_start () { md /home/.scr_rec; while true; do sleep 3 && screencapture -tpng -x capture.$(date +%F-%T).png; done;}
+
+function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
+

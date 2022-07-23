@@ -1,0 +1,34 @@
+#!/bin/bash
+
+extend_path() {
+    # Default is "prepend", checks if given path is in PATH, if not prepends/appends it.
+
+    if [ ! -z $1 ]; then
+        if [ "$2" == "append" ]; then
+            if [[ ":$PATH:" != *":$1:"* ]]; then
+                PATH="$PATH:$1"
+            fi
+        else
+            if [[ ":$PATH:" != *":$1:"* ]]; then
+                PATH="$1:$PATH"
+            fi
+        fi
+    fi
+}
+
+# TODO: create the order properly and document better,  maybe write a function
+# The order in PATH is significant, here the desired PATH order.
+# 1. $HOME/bin
+# 2. dotfiles/bin
+
+GNU_BIN_DIR="$(brew --prefix coreutils)/libexec/gnubin"
+extend_path "${GNU_BIN_DIR}" "prepend"
+
+DOTFILES_BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../bin" && pwd )"
+extend_path "${DOTFILES_BIN_DIR}" "prepend"
+
+HOME_BIN_DIR="${HOME}/bin"
+extend_path "${HOME_BIN_DIR}" "prepend"
+
+# Homebrew sbin
+extend_path "/usr/local/sbin" "prepend"

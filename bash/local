@@ -1,0 +1,18 @@
+#!/bin/bash
+
+pon () {
+  export http_proxy=http://localhost:3128
+  export https_proxy=http://localhost:3128
+  export all_proxy=http://localhost:3128
+  export no_proxy=.intranet.ing.net,localhost,127.0.0.1
+}
+
+poff() {
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+  unset no_proxy
+}
+
+# ag in npm-feature-repository
+agn () { cd  ~/code/work/global-templates > /dev/null && ag "$1" web/npm-feature-repository && cd - > /dev/null ;}

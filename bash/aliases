@@ -1,0 +1,15 @@
+#!/bin/bash
+
+alias c="clear"
+alias reload="source ${HOME}/.bashrc"
+alias agi="ag --path-to-ignore ${HOME}/.agignore"
+alias e="emacsclient --no-wait"
+alias v="vim"
+
+# git aliases
+alias g="git"
+alias gst="git st"
+alias gcm="git cm"
+alias gca="git ca"
+alias gcam="git cam"
+alias updatedb="/usr/libexec/locate.updatedb"
