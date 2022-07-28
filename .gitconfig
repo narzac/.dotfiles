@@ -52,3 +52,5 @@
     mff = merge --ff-only
     pff = pull --ff-only
     fa = fetch --all
+    rh = reset HEAD
+    srh1 = reset --soft HEAD^1

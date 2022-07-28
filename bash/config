@@ -7,6 +7,12 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
+BASH_COMPLETION_FILES=$(find `brew --prefix`/etc/bash_completion.d  \( -type l -o -type f \) -mindepth 1 -maxdepth 1)
+for file in ${BASH_COMPLETION_FILES[@]}; do
+  source $file
+done;
+unset file;
+
 # nvm
 mkdir -p "${HOME}/.nvm"
 export NVM_DIR="$HOME/.nvm"
