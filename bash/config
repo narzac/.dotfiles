@@ -7,11 +7,56 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-BASH_COMPLETION_FILES=$(find `brew --prefix`/etc/bash_completion.d  \( -type l -o -type f \) -mindepth 1 -maxdepth 1)
-for file in ${BASH_COMPLETION_FILES[@]}; do
-  source $file
-done;
-unset file;
+eval "$(starship init bash)"
+
+# BASH_COMPLETION_FILES=$(find `brew --prefix`/etc/bash_completion.d  \( -type l -o -type f \) -mindepth 1 -maxdepth 1)
+# for file in ${BASH_COMPLETION_FILES[@]}; do
+#   source $file
+# done;
+# unset file;
+
+if [ -f $(brew --prefix)/etc/brew ]; then
+  . $(brew --prefix)/etc/brew
+fi
+
+if [ -f $(brew --prefix)/etc/brew-services ]; then
+  . $(brew --prefix)/etc/brew-services
+fi
+
+if [ -f $(brew --prefix)/etc/docker ]; then
+  . $(brew --prefix)/etc/docker
+fi
+
+if [ -f $(brew --prefix)/etc/git-completion.bash ]; then
+  . $(brew --prefix)/etc/git-completion.bash
+fi
+
+if [ -f $(brew --prefix)/etc/git-prompt.sh ]; then
+  . $(brew --prefix)/etc/git-prompt.sh
+fi
+
+if [ -f $(brew --prefix)/etc/npm ]; then
+  . $(brew --prefix)/etc/npm
+fi
+
+if [ -f $(brew --prefix)/etc/tmux ]; then
+  . $(brew --prefix)/etc/tmux
+fi
+
+if [ -f $(brew --prefix)/etc/tldr ]; then
+  . $(brew --prefix)/etc/tldr
+fi
+
+if [ -f $(brew --prefix)/etc/az ]; then
+  . $(brew --prefix)/etc/az
+fi
+
+## fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# fzf-bash-completion
+# source /Users/dp34vg/code/personal/fzf-tab-completion/bash/fzf-bash-completion.sh
+# bind -x '"\t": fzf_bash_completion'
 
 # nvm
 mkdir -p "${HOME}/.nvm"

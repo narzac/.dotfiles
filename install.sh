@@ -13,6 +13,8 @@ DOTFILES=(
     ".gdbinit"
     ".vimrc"
     ".agignore"
+    ".yabairc"
+    ".skhdrc"
 )
 
 for file in ${DOTFILES[@]}; do
