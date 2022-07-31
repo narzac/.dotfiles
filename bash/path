@@ -35,3 +35,5 @@ extend_path "/usr/local/sbin" "prepend"
 
 # GNU sed
 extend_path "/usr/local/opt/gnu-sed/libexec/gnubin" "prepend"
+
+extend_path "${HOME}/go/bin" "appemd"
