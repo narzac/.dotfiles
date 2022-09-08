@@ -69,3 +69,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # ansible
 export ANSIBLE_NOCOWS=1
+
+
+export KALEIDOSCOPE_DIR=/Users/dp34vg/code/personal/keyboard/Kaleidoscope

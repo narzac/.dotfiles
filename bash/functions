@@ -20,6 +20,21 @@ csv_pretty() { column -s, -t < "$1" | less -#2 -N -S ;}
 
 recpriv_start () { md /home/.scr_rec; while true; do sleep 3 && screencapture -tpng -x capture.$(date +%F-%T).png; done;}
 
-function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
+gi() { curl -sL https://www.gitignore.io/api/$@ ;}
 
-# function agr { ag -0 -l "$1" | xargs -0 perl -pi.bak -e "s/$1/$2/g"; }
+agr() {
+  stringToFind="$1"
+  replaceStringWith="$2"
+  pathToSearch="${3:-.}" # If variable not set or null, use . as pathToSearch, no ssignment to $3 variable
+  # pathToSearch="${3:=.}" # If variable not set or null, use . as pathToSearch, and assign . to $3 as well
+
+  MATCHED_FILES=$(rg -l "$stringToFind" "$pathToSearch")
+
+  for file in ${MATCHED_FILES[@]}; do
+    # TODO: Use color output instead of <<something>>
+    # echo Replacing all instances of "<<${stringToFind}>>" with "<<${replaceStringWith}>>" for file: "<<${file}>>"
+    sed -i "s|${stringToFind}|${replaceStringWith}|g" "$file"
+  done;
+
+  unset file MATCHED_FILES stringToFind replaceStringWith pathToSearch;
+}
