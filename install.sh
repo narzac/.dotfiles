@@ -3,6 +3,9 @@
 # The directory of this file.
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+bash ${BASEDIR}/brew.sh
+
+
 DOTFILES=(
     ".bashrc"
     ".bash_profile"

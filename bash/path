@@ -21,6 +21,9 @@ extend_path() {
 # 1. $HOME/bin
 # 2. dotfiles/bin
 
+# adjust paths for homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 GNU_BIN_DIR="$(brew --prefix coreutils)/libexec/gnubin"
 extend_path "${GNU_BIN_DIR}" "prepend"
 
@@ -31,7 +34,8 @@ HOME_BIN_DIR="${HOME}/bin"
 extend_path "${HOME_BIN_DIR}" "prepend"
 
 # Homebrew sbin
-extend_path "/usr/local/sbin" "prepend"
+extend_path "/usr/local/bin" "prepend"
+# extend_path "/usr/local/sbin" "prepend"
 
 # GNU sed
 extend_path "/usr/local/opt/gnu-sed/libexec/gnubin" "prepend"

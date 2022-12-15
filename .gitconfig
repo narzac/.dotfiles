@@ -3,7 +3,7 @@
     email = ahmethegreen@gmail.com
 
 [includeIf "gitdir:~/code/work/"]
-    path = ~/code/work/.gitconfig
+    path = ~/.gitconfig-ing
 
 [color]
     ui = true
