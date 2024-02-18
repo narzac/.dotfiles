@@ -11,7 +11,11 @@ alias g="git"
 alias gst="git st"
 alias gcm="git cm"
 alias gca="git ca"
+alias gcanv="git ca --no-verify"
 alias gcam="git cam"
 alias updatedb="/usr/libexec/locate.updatedb"
 alias gitsync="git add . && git commit --amend --no-edit && git push origin HEAD -f"
 alias gitclear="git reset HEAD && git co . && git clean -fd"
+
+#npm
+alias nr="npm run"

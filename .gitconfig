@@ -2,7 +2,7 @@
     name = narzac
     email = ahmethegreen@gmail.com
 
-[includeIf "gitdir:~/code/work/"]
+[includeIf "gitdir:~/code/azure/"]
     path = ~/.gitconfig-ing
 
 [color]
